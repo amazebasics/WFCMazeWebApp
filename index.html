@@ -1,224 +1,47 @@
-<html><head><base href="https://mazegenerator.com/algorithm=wavefunctioncollapse"><title>MazeGenerator.com - Wave Function Collapse Algorithm</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f4f4f4;
-  }
-  h1, h2 {
-    color: #2c3e50;
-  }
-  .maze-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  #maze {
-    display: grid;
-    grid-template-columns: repeat(20, 20px);
-    grid-template-rows: repeat(20, 20px);
-    gap: 1px;
-    background-color: #34495e;
-    padding: 1px;
-    border: 2px solid #34495e;
-  }
-  .cell {
-    width: 20px;
-    height: 20px;
-    background-color: #ecf0f1;
-    transition: background-color 0.3s ease;
-  }
-  .wall {
-    background-color: #34495e;
-  }
-  .path {
-    background-color: #3498db;
-  }
-  button {
-    background-color: #2980b9;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  button:hover {
-    background-color: #3498db;
-  }
-  .controls {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  .explanation {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MazeGenerator.com - Wave Function Collapse Algorithm</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>MazeGenerator.com - Wave Function Collapse Algorithm</h1>
+    <h1>MazeGenerator.com - Wave Function Collapse Algorithm</h1>
   
-  <div class="controls">
-    <button onclick="generateMaze()">Generate New Maze</button>
-    <button onclick="solveMaze()">Solve Maze</button>
-  </div>
+    <div class="controls">
+        <button onclick="generateMaze()">Generate New Maze</button>
+        <button onclick="solveMaze()">Solve Maze</button>
+    </div>
 
-  <div class="maze-container">
-    <div id="maze"></div>
-  </div>
+    <div class="maze-container">
+        <div id="maze"></div>
+    </div>
 
-  <div class="explanation">
-    <h2>About Wave Function Collapse (WFC) Algorithm</h2>
-    <p>The Wave Function Collapse algorithm is a fascinating approach to procedural generation, originally conceived for creating tile-based images but adaptable to various applications, including maze generation.</p>
-    
-    <h3>How it works:</h3>
-    <ol>
-      <li><strong>Initial state:</strong> The maze starts as a grid where each cell can be in any state (path or wall).</li>
-      <li><strong>Observation:</strong> We choose a cell and "collapse" its wave function, deciding whether it's a path or a wall based on predefined rules and probabilities.</li>
-      <li><strong>Propagation:</strong> This decision affects neighboring cells, limiting their possible states.</li>
-      <li><strong>Iteration:</strong> We repeat the process, always choosing the cell with the fewest possible states to collapse next.</li>
-      <li><strong>Completion:</strong> The algorithm continues until all cells have been assigned a definite state.</li>
-    </ol>
+    <div class="explanation">
+        <h2>About Wave Function Collapse (WFC) Algorithm</h2>
+        <p>The Wave Function Collapse algorithm is a fascinating approach to procedural generation, originally conceived for creating tile-based images but adaptable to various applications, including maze generation.</p>
+        
+        <h3>How it works:</h3>
+        <ol>
+            <li><strong>Initial state:</strong> The maze starts as a grid where each cell can be in any state (path or wall).</li>
+            <li><strong>Observation:</strong> We choose a cell and "collapse" its wave function, deciding whether it's a path or a wall based on predefined rules and probabilities.</li>
+            <li><strong>Propagation:</strong> This decision affects neighboring cells, limiting their possible states.</li>
+            <li><strong>Iteration:</strong> We repeat the process, always choosing the cell with the fewest possible states to collapse next.</li>
+            <li><strong>Completion:</strong> The algorithm continues until all cells have been assigned a definite state.</li>
+        </ol>
 
-    <h3>Advantages for Maze Generation:</h3>
-    <ul>
-      <li>Creates more organic, less predictable patterns compared to traditional algorithms.</li>
-      <li>Can incorporate complex rules and constraints for interesting maze features.</li>
-      <li>Highly customizable - different rule sets lead to different maze styles.</li>
-      <li>Guarantees connectedness and solvability when implemented correctly.</li>
-    </ul>
+        <h3>Advantages for Maze Generation:</h3>
+        <ul>
+            <li>Creates more organic, less predictable patterns compared to traditional algorithms.</li>
+            <li>Can incorporate complex rules and constraints for interesting maze features.</li>
+            <li>Highly customizable - different rule sets lead to different maze styles.</li>
+            <li>Guarantees connectedness and solvability when implemented correctly.</li>
+        </ul>
 
-    <p>In our implementation, we've adapted WFC to create mazes with interesting patterns and guaranteed paths. The algorithm ensures that the start and end points are always connected, while creating a mix of open areas and intricate passages.</p>
-  </div>
+        <p>In our implementation, we've adapted WFC to create mazes with interesting patterns and guaranteed paths. The algorithm ensures that the start and end points are always connected, while creating a mix of open areas and intricate passages.</p>
+    </div>
 
-  <script>
-    const mazeSize = 20;
-    const maze = document.getElementById('maze');
-    
-    function createCell(x, y) {
-      const cell = document.createElement('div');
-      cell.className = 'cell';
-      cell.id = `cell-${x}-${y}`;
-      return cell;
-    }
-    
-    function initializeMaze() {
-      maze.innerHTML = '';
-      for (let y = 0; y < mazeSize; y++) {
-        for (let x = 0; x < mazeSize; x++) {
-          maze.appendChild(createCell(x, y));
-        }
-      }
-    }
-    
-    function getCell(x, y) {
-      return document.getElementById(`cell-${x}-${y}`);
-    }
-    
-    function setWall(x, y) {
-      const cell = getCell(x, y);
-      if (cell) cell.classList.add('wall');
-    }
-    
-    function clearCell(x, y) {
-      const cell = getCell(x, y);
-      if (cell) cell.classList.remove('wall', 'path');
-    }
-    
-    function generateMaze() {
-      initializeMaze();
-      
-      const cells = [];
-      for (let y = 0; y < mazeSize; y++) {
-        for (let x = 0; x < mazeSize; x++) {
-          cells.push({x, y, entropy: Math.random()});
-        }
-      }
-      
-      while (cells.length > 0) {
-        cells.sort((a, b) => a.entropy - b.entropy);
-        const {x, y} = cells.shift();
-        
-        if (Math.random() < 0.3) {
-          setWall(x, y);
-        }
-        
-        const neighbors = [
-          {x: x+1, y}, {x: x-1, y}, {x, y: y+1}, {x, y: y-1}
-        ].filter(n => n.x >= 0 && n.x < mazeSize && n.y >= 0 && n.y < mazeSize);
-        
-        neighbors.forEach(n => {
-          const index = cells.findIndex(cell => cell.x === n.x && cell.y === n.y);
-          if (index !== -1) {
-            cells[index].entropy *= 0.8;
-          }
-        });
-      }
-      
-      // Ensure start and end are clear
-      clearCell(0, 0);
-      clearCell(mazeSize-1, mazeSize-1);
-      
-      // Ensure path exists (simplified)
-      let x = 0, y = 0;
-      while (x < mazeSize-1 || y < mazeSize-1) {
-        clearCell(x, y);
-        if (x < mazeSize-1 && Math.random() < 0.6) x++;
-        else if (y < mazeSize-1) y++;
-      }
-    }
-    
-    function solveMaze() {
-      const start = {x: 0, y: 0};
-      const end = {x: mazeSize-1, y: mazeSize-1};
-      const queue = [start];
-      const visited = new Set();
-      const parent = new Map();
-      
-      while (queue.length > 0) {
-        const current = queue.shift();
-        const {x, y} = current;
-        
-        if (x === end.x && y === end.y) {
-          let path = [end];
-          while (path[path.length-1] !== start) {
-            path.push(parent.get(`${path[path.length-1].x},${path[path.length-1].y}`));
-          }
-          path.reverse().forEach(({x, y}) => {
-            getCell(x, y).classList.add('path');
-          });
-          return;
-        }
-        
-        const neighbors = [
-          {x: x+1, y}, {x: x-1, y}, {x, y: y+1}, {x, y: y-1}
-        ].filter(n => 
-          n.x >= 0 && n.x < mazeSize && 
-          n.y >= 0 && n.y < mazeSize &&
-          !getCell(n.x, n.y).classList.contains('wall') &&
-          !visited.has(`${n.x},${n.y}`)
-        );
-        
-        for (const neighbor of neighbors) {
-          queue.push(neighbor);
-          visited.add(`${neighbor.x},${neighbor.y}`);
-          parent.set(`${neighbor.x},${neighbor.y}`, current);
-        }
-      }
-      
-      alert("No solution found!");
-    }
-    
-    // Initialize and generate a maze on page load
-    generateMaze();
-  </script>
-</body></html>
+    <script src="script.js"></script>
+</body>
+</html>
