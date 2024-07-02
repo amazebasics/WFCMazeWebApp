@@ -1,47 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MazeGenerator.com - Wave Function Collapse Algorithm</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>MazeGenerator.com - Wave Function Collapse Algorithm</h1>
-  
-    <div class="controls">
-        <button onclick="generateMaze()">Generate New Maze</button>
-        <button onclick="solveMaze()">Solve Maze</button>
-    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MazeGenerator.com - Wave Function Collapse Algorithm</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>MazeGenerator.com - Wave Function Collapse Algorithm</h1>
 
-    <div class="maze-container">
-        <div id="maze"></div>
-    </div>
+        <div class="controls">
+            <button onclick="generateMaze()">Generate New Maze</button>
+            <button onclick="solveMaze()">Solve Maze</button>
+        </div>
 
-    <div class="explanation">
-        <h2>About Wave Function Collapse (WFC) Algorithm</h2>
-        <p>The Wave Function Collapse algorithm is a fascinating approach to procedural generation, originally conceived for creating tile-based images but adaptable to various applications, including maze generation.</p>
-        
-        <h3>How it works:</h3>
-        <ol>
-            <li><strong>Initial state:</strong> The maze starts as a grid where each cell can be in any state (path or wall).</li>
-            <li><strong>Observation:</strong> We choose a cell and "collapse" its wave function, deciding whether it's a path or a wall based on predefined rules and probabilities.</li>
-            <li><strong>Propagation:</strong> This decision affects neighboring cells, limiting their possible states.</li>
-            <li><strong>Iteration:</strong> We repeat the process, always choosing the cell with the fewest possible states to collapse next.</li>
-            <li><strong>Completion:</strong> The algorithm continues until all cells have been assigned a definite state.</li>
-        </ol>
+        <div class="maze-container">
+            <div id="maze"></div>
+        </div>
 
-        <h3>Advantages for Maze Generation:</h3>
-        <ul>
-            <li>Creates more organic, less predictable patterns compared to traditional algorithms.</li>
-            <li>Can incorporate complex rules and constraints for interesting maze features.</li>
-            <li>Highly customizable - different rule sets lead to different maze styles.</li>
-            <li>Guarantees connectedness and solvability when implemented correctly.</li>
-        </ul>
+        <div class="explanation">
+            <h2>About Wave Function Collapse (WFC) Algorithm</h2>
+            <p>
+                The Wave Function Collapse algorithm is a fascinating approach
+                to procedural generation, originally conceived for creating
+                tile-based images but adaptable to various applications,
+                including maze generation.
+            </p>
 
-        <p>In our implementation, we've adapted WFC to create mazes with interesting patterns and guaranteed paths. The algorithm ensures that the start and end points are always connected, while creating a mix of open areas and intricate passages.</p>
-    </div>
+            <h3>How it works:</h3>
+            <ol>
+                <li>
+                    <strong>Initial state:</strong> The maze starts as a grid
+                    where each cell can be in any state (path or wall).
+                </li>
+                <li>
+                    <strong>Observation:</strong> We choose a cell and
+                    "collapse" its wave function, deciding whether it's a path
+                    or a wall based on predefined rules and probabilities.
+                </li>
+                <li>
+                    <strong>Propagation:</strong> This decision affects
+                    neighboring cells, limiting their possible states.
+                </li>
+                <li>
+                    <strong>Iteration:</strong> We repeat the process, always
+                    choosing the cell with the fewest possible states to
+                    collapse next.
+                </li>
+                <li>
+                    <strong>Completion:</strong> The algorithm continues until
+                    all cells have been assigned a definite state.
+                </li>
+            </ol>
 
-    <script src="script.js"></script>
-</body>
+            <h3>Advantages for Maze Generation:</h3>
+            <ul>
+                <li>
+                    Creates more organic, less predictable patterns compared to
+                    traditional algorithms.
+                </li>
+                <li>
+                    Can incorporate complex rules and constraints for
+                    interesting maze features.
+                </li>
+                <li>
+                    Highly customizable - different rule sets lead to different
+                    maze styles.
+                </li>
+                <li>
+                    Guarantees connectedness and solvability when implemented
+                    correctly.
+                </li>
+            </ul>
+
+            <p>
+                In our implementation, we've adapted WFC to create mazes with
+                interesting patterns and guaranteed paths. The algorithm ensures
+                that the start and end points are always connected, while
+                creating a mix of open areas and intricate passages.
+            </p>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
 </html>
