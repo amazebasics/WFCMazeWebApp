@@ -3,21 +3,21 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>MazeGenerator.com - Wave Function Collapse Algorithm</title>
+        <title>Maze Generator - Wave Function Collapse Algorithm</title>
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <h1>MazeGenerator.com - Wave Function Collapse Algorithm</h1>
+        <h1>Maze Generator - Wave Function Collapse Algorithm</h1>
+        <div class="controls-maze-container">
+            <div class="controls">
+                <button onclick="generateMaze()">Generate New Maze</button>
+                <button onclick="solveMaze()">Solve Maze</button>
+            </div>
 
-        <div class="controls">
-            <button onclick="generateMaze()">Generate New Maze</button>
-            <button onclick="solveMaze()">Solve Maze</button>
+            <div class="maze-container">
+                <div id="maze"></div>
+            </div>
         </div>
-
-        <div class="maze-container">
-            <div id="maze"></div>
-        </div>
-
         <div class="explanation">
             <h2>About Wave Function Collapse (WFC) Algorithm</h2>
             <p>

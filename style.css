@@ -9,8 +9,12 @@ body {
     font-family: "Arial", sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #fafafa;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
 }
 
 .container {
@@ -26,21 +30,39 @@ header {
 h1,
 h2 {
     color: #2c3e50;
-    text-align: center;
+    text-align: center; 
+}
+
+h1 {
+    background-color: white;
+    padding: 0.8rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 5px -2px rgb(0, 0, 0, 0.2);
+    width: 70vw;
+}
+
+h2 {
     margin-bottom: 20px;
+}
+
+.controls-maze-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2);
+    width: 70vw;
 }
 
 .maze-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+
 }
 
 #maze {
     display: grid;
     grid-template-columns: repeat(20, 20px);
     grid-template-rows: repeat(20, 20px);
-    gap: 1px;
     background-color: #34495e;
     border: 2px solid #34495e;
 }
@@ -50,10 +72,13 @@ h2 {
     height: 20px;
     background-color: #ecf0f1;
     transition: background-color 0.3s ease;
+    border: 0.1px solid #34495e; /* Added border style to avoid grid border display, 
+    which separated the maze in 5x5 squares. This approach requires removing gap:1px from #maze */
 }
 
 .wall {
     background-color: #34495e;
+    border: none; /* No borders for walls */
 }
 
 .path {
@@ -63,10 +88,13 @@ h2 {
 .controls {
     text-align: center;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .controls button {
-    background-color: #2980b9;
+    background-color: #3473D9;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -74,19 +102,22 @@ h2 {
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    border-radius: 0.2rem;
 }
 
 .controls button:hover {
-    background-color: #3498db;
+    background-color: #2B5FB3;
 }
 
 .explanation {
     background-color: white;
-    padding: 20px;
+    padding: 2rem;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
     text-align: left; /* 왼쪽 정렬 추가 */
+    width: 70vw;
+    text-align: justify;
 }
 
 .explanation h2,
@@ -101,7 +132,39 @@ h2 {
     line-height: 1.6;
 }
 
+.explanation p {
+    padding: 1rem 0.2rem;
+}
+
 .explanation ul {
     list-style-type: disc;
-    margin-left: 20px;
+    padding: 0.5rem 2rem;
 }
+
+.explanation ol {
+    padding: 0.5rem 2rem;
+}
+
+/* responsive design */
+@media only screen and (max-width: 600px) {
+    .explanation, .controls-maze-container, h1 {
+        width: 90vw;
+    }
+  }
+
+
+@media only screen and (max-width: 450px) {
+    .controls {
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+    #maze {
+        grid-template-columns: repeat(20, 15px);
+        grid-template-rows: repeat(20, 15px);
+        border: 1px solid #34495e;
+    }
+    .cell {
+        width: 15px;
+        height: 15px;
+    }
+  }
