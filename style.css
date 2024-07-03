@@ -145,6 +145,27 @@ h2 {
     padding: 0.5rem 2rem;
 }
 
+a {
+    color: #3473D9;
+    text-decoration: none;
+    position: relative;
+}
+
+a::before {
+    content: "";
+    width: 0%;
+    border-bottom: solid 3px #3473D9;
+    border-radius: 20.5rem;
+    position: absolute;
+    left: 0;
+    bottom: -10%;
+}
+
+a:hover::before {
+    width: 100%;
+    transition: width 300ms;
+}
+
 /* responsive design */
 @media only screen and (max-width: 600px) {
     .explanation, .controls-maze-container, h1 {
