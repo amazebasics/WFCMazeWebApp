@@ -1,70 +1,69 @@
 # Wave Function Collapse Maze Generator and Solver
 
-Welcome to the Wave Function Collapse Maze Generator and Solver! This project implements a maze generator and solver using the Wave Function Collapse (WFC) algorithm. The WFC algorithm is a procedural content generation technique that can create intricate patterns, such as mazes, based on a set of input constraints.
+<p align="center">
+  <img src="assets/Maze1.png" width="250" height=""/>
+</p>
+
+This project creates unique labirynths by utilising the Wave Function Collapse algorithm. 
+Thanks to WFC algorithm, the generated mazes are **always solveable** and, by implementing 
+the Dijkstra's algorithm, the project is able to find the quickest, continuous path from 
+the maze's start to its end. 
+
+You can benefit from this project if you'd like to develop a maze-based game and are 
+looking for a program to generate these mazes for you. Alternatively, you can 
+use this project to learn how to write similar generators and/or solvers.
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Wave Function Collapse Algorithm](#wave-function-collapse-algorithm)
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
+<!-- no toc -->
+- [How to Run It](#how-to-run-it)
+- [What It Does](#what-it-does)
+- [How It Works](#how-it-works)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Introduction
+## How to Run It
 
-The Wave Function Collapse (WFC) Maze Generator and Solver uses the WFC algorithm to generate complex and unique mazes. It also includes a solver that can find a path through the generated mazes. The WFC algorithm is known for its ability to create visually appealing and non-repetitive patterns, making it ideal for generating mazes.
+You can follow these steps to install and run the project on your computer:
 
-## Wave Function Collapse Algorithm
-
-The Wave Function Collapse algorithm is inspired by quantum mechanics and the concept of superposition. Here's a simple explanation:
-
-1. **Superposition**: Imagine each cell in a grid having multiple possible states (like walls or paths in a maze). Initially, each cell can be in any state.
-
-2. **Observation**: You pick a cell and determine its state based on some rules and the states of its neighboring cells. This is similar to observing a quantum particle, collapsing its superposition into a single state.
-
-3. **Propagation**: Once a cell's state is determined, this influences the possible states of its neighboring cells. This propagation continues until all cells have their states determined.
-
-4. **Backtracking**: If a contradiction occurs (where no valid state is possible for a cell), the algorithm backtracks to a previous state and tries a different possibility.
-
-In the context of maze generation, the WFC algorithm ensures that the generated maze is consistent and follows the defined rules, resulting in a coherent and solvable maze.
-
-## Features
-
-- **Maze Generation**: Generate unique and intricate mazes using the WFC algorithm.
-- **Maze Solving**: Find a path through the generated mazes.
-- **Customizable Parameters**: Adjust the size and complexity of the generated mazes.
-
-## Installation
-
-To install and run the project locally, follow these steps:
-
-1. Clone the repository:
+1. Clone the repository and enter the directory:
    ```bash
-   git clone https://github.com/yourusername/wfc-maze-generator-solver.git
-   cd wfc-maze-generator-solver
+   git clone https://github.com/amazebasics/WFCMazeWebApp.git
+   cd WFCMazeWebApp
    ```
 
-2. Install dependencies:
+2. Use the browser of your choice (e.g. Firefox) to open `index.html`:
    ```bash
-   npm install
+   firefox index.html
    ```
 
-3. Start the application:
-   ```bash
-   npm start
-   ```
+3. Use blue buttons to generate and/or solve mazes.
 
-## Usage
 
-1. Open your browser and navigate to `http://localhost:3000`.
-2. Use the interface to generate and solve mazes.
-3. Adjust the parameters to explore different maze configurations.
+## What It Does
+
+**By clicking "Generate New Maze", you can generate original, solveable mazes**:
+  
+<p align="center">
+  <img src="assets/gif1.gif" width="500" />
+</p>
+
+**By clicking "Solve Maze" button, you can view the maze's solution**:
+
+<p align="center">
+  <img src="assets/gif2.gif" width="500"/>
+</p>
+
+## How It Works
+
+This project utilises two algorithms: one to create mazes and one to solve them:
+
+- Wave Function Collapse algorithm is responsible for creating the mazes. Robert Heaton explained it very well [on his blog](https://robertheaton.com/2018/12/17/wavefunction-collapse-algorithm/).
+- Dijkstra's algorithm is used to solve the generated mazes. You can read all about it on [Wikipedia](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm).
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+All contributions to this project are welcome! Just follow these steps:
 
 1. Fork the repository.
 2. Create a feature branch (`git checkout -b feature/your-feature-name`).
